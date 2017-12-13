@@ -21,6 +21,7 @@ const styles = {
 };
 
 const Header = (props) => {
+  console.log('Header component');
   const { textStyle, viewStyle } = styles;
   const { headerTitle } = props;
   return (

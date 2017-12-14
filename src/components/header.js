@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 
-const styles = {
+const styles = StyleSheet.create({
   textStyle: {
     fontSize: 20,
   },
@@ -18,7 +18,7 @@ const styles = {
     elevation: 2,
     position: 'relative',
   },
-};
+});
 
 const Header = (props) => {
   console.log('Header component');

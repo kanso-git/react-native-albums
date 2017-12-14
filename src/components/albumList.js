@@ -4,7 +4,7 @@ import axios from 'axios';
 import AlbumDetail from './AlbumDetail';
 
 class AlbumList extends Component {
-  state ={
+  state = {
     albums: [],
     loading: false,
     error: false,
@@ -33,6 +33,8 @@ class AlbumList extends Component {
   styles = StyleSheet.create({
     contentContainer: {
       paddingVertical: 20,
+      paddingLeft: 10,
+      paddingRight: 10,
     },
   });
   displayAlbumsIfNoErros = () => (this.state.error

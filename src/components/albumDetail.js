@@ -1,44 +1,30 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import AlbumHeader from './AlbumHeader';
+import AlbumImage from './AlbumImage';
+import AlbumFooter from './AlbumFooter';
 
-const styles = {
-  cardViewStyle: {
-    backgroundColor: '#F8F8F8',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 250,
-    borderWidth: 1,
-    borderColor: '#ddd',
-    borderRadius: 2,
-    margin: 10,
+const styles = StyleSheet.create({
+  albumStyle: {
+    height: 400,
+    flexDirection: 'column',
+    borderWidth: 2,
+    borderColor: 'gray',
+    marginBottom: 5,
+    borderRadius: 8,
   },
-  mainImageStyle: {
-    width: '90%',
-    height: '80%',
-  },
-};
+});
 
 const AlbumDetail = (props) => {
-  const { cardViewStyle, mainImageStyle } = styles;
-  const {
-    image, title, artist, thumbnail_image,
-  } = props.album;
-  const pic = {
-    uri: image,
-  };
-  const thumbnailPic = {
-    uri: thumbnail_image,
-  };
+  const { albumStyle } = styles;
   return (
-    <View style={cardViewStyle}>
-      <Text > { title } </Text>
-      <Text > { artist } </Text>
-      <Image source={pic} style={mainImageStyle} />
-      <Text > footer </Text>
+    <View style={albumStyle}>
+      <AlbumHeader album={props.album} />
+      <AlbumImage  album={props.album} />
+      <AlbumFooter />
     </View>
   );
 };
-
 
 export default AlbumDetail;

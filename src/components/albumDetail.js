@@ -1,29 +1,74 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import AlbumHeader from './AlbumHeader';
-import AlbumImage from './AlbumImage';
-import AlbumFooter from './AlbumFooter';
+import { Text, Image, View, StyleSheet, Linking } from 'react-native';
+import Card from './Card';
+import CardSection from './CardSection';
+import Button from './Button';
 
 const styles = StyleSheet.create({
   albumStyle: {
     height: 400,
     flexDirection: 'column',
     borderWidth: 2,
-    borderColor: 'gray',
+    borderColor: 'white',
     marginBottom: 5,
     borderRadius: 8,
+    shadowColor: '#000',
+    shadowOffset: { width: 2, height: 2 },
+    shadowOpacity: 0.4,
+  },
+  textContainer: {
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+  },
+  headerTextStyle: {
+    fontSize: 18,
+  },
+  thumbnailContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  thumbnailStyle: {
+    width: 50,
+    height: 50,
+  },
+  coverImageStyle: {
+    width: null,
+    height: 350,
+    flex: 1,
   },
 });
 
-const AlbumDetail = (props) => {
-  const { albumStyle } = styles;
+const AlbumDetail = ( { album } ) => {
+  const { albumStyle , textContainer,
+    thumbnailStyle, thumbnailContainer,
+    coverImageStyle, headerTextStyle }= styles;
+  const { title, artist, thumbnail_image, image, url }= album;
+  const thumbnailImage= {
+    uri: thumbnail_image,
+  };
   return (
-    <View style={albumStyle}>
-      <AlbumHeader album={props.album} />
-      <AlbumImage  album={props.album} />
-      <AlbumFooter />
-    </View>
+    <Card>
+      <CardSection>
+        <View style={thumbnailContainer}>
+          <Image source={thumbnailImage} style={thumbnailStyle} />
+        </View>
+        <View style={textContainer}>
+          <Text style={headerTextStyle}>{title}</Text>
+          <Text>{artist}</Text>
+        </View>
+      </CardSection>
+      <CardSection>
+        <Image source ={{uri:image}} style={coverImageStyle} />
+      </CardSection>
+      <CardSection>
+        <Button  press={()=>Linking.openURL(url)}>
+          Buy now
+        </Button>
+      </CardSection>
+    </Card>
   );
 };
 

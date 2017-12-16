@@ -4,10 +4,12 @@ import { View, Text, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   infoStyle: {
-    flex: 4,
+    flex: 5,
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+    height: 40,
   },
   textStyle: {
-    color: 'white',
     fontSize: 13,
   },
 });

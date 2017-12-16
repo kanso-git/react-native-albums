@@ -19,8 +19,7 @@ class AlbumList extends Component {
       this.setState(() => ({ loading: true }));
       const res = await axios.get(url);
       this.setState(() => ({ loading: false }));
-      const albums = res.data
-        .map(album => <AlbumDetail key={album.title} album={album} />);
+      const albums = res.data;
       this.setState(() => ({
         albums,
       }));
@@ -33,12 +32,14 @@ class AlbumList extends Component {
   styles = StyleSheet.create({
     contentContainer: {
       paddingVertical: 20,
-      paddingLeft: 10,
-      paddingRight: 10,
     },
   });
   displayAlbumsIfNoErros = () => (this.state.error
-    ? <Text> Error loading data from server </Text> : this.state.albums)
+    ? <Text> Error loading data from server </Text> : this.renderAlbums())
+  renderAlbums = () => this.state
+    .albums
+    .map(album => <AlbumDetail key={album.title} album={album} />);
+
   render() {
     return (
       <ScrollView contentContainerStyle={this.styles.contentContainer}>

@@ -5,12 +5,12 @@ import { View, Image, StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   viewStyle: {
     flex: 1,
-    alignItems: 'flex-end',
+    alignItems: 'flex-start',
+    padding: 5,
   },
   imageStyle: {
     width: 50,
     height: 50,
-    borderRadius: 20,
   },
 });
 

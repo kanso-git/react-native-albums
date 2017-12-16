@@ -6,17 +6,6 @@ import CardSection from './CardSection';
 import Button from './Button';
 
 const styles = StyleSheet.create({
-  albumStyle: {
-    height: 400,
-    flexDirection: 'column',
-    borderWidth: 2,
-    borderColor: 'white',
-    marginBottom: 5,
-    borderRadius: 8,
-    shadowColor: '#000',
-    shadowOffset: { width: 2, height: 2 },
-    shadowOpacity: 0.4,
-  },
   textContainer: {
     flexDirection: 'column',
     justifyContent: 'space-around',
@@ -41,12 +30,16 @@ const styles = StyleSheet.create({
   },
 });
 
-const AlbumDetail = ( { album } ) => {
-  const { albumStyle , textContainer,
+const AlbumDetail = ({ album }) => {
+  const {
+    textContainer,
     thumbnailStyle, thumbnailContainer,
-    coverImageStyle, headerTextStyle }= styles;
-  const { title, artist, thumbnail_image, image, url }= album;
-  const thumbnailImage= {
+    coverImageStyle, headerTextStyle,
+  } = styles;
+  const {
+    title, artist, thumbnail_image, image, url,
+  } = album;
+  const thumbnailImage = {
     uri: thumbnail_image,
   };
   return (
@@ -61,10 +54,10 @@ const AlbumDetail = ( { album } ) => {
         </View>
       </CardSection>
       <CardSection>
-        <Image source ={{uri:image}} style={coverImageStyle} />
+        <Image source={{ uri: image }} style={coverImageStyle} />
       </CardSection>
       <CardSection>
-        <Button  press={()=>Linking.openURL(url)}>
+        <Button press={() => Linking.openURL(url)}>
           Buy now
         </Button>
       </CardSection>

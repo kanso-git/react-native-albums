@@ -30,6 +30,8 @@ const styles = StyleSheet.create({
   },
 });
 
+// check it out to display the building
+
 const AlbumDetail = ({ album }) => {
   const {
     textContainer,
